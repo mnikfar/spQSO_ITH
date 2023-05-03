@@ -1,0 +1,2844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <annotation>
+    <SimBiology xmlns="http://www.mathworks.com">
+      <Version Major="6" Minor="2" Point="0"/>
+    </SimBiology>
+  </annotation>
+  <model id="mw1c228df8_bdc5_4d4b_ad33_ad407ab43bbd" name="Immune Oncology Model">
+    <listOfUnitDefinitions>
+      <unitDefinition id="MWBUILTINUNIT_liter" name="liter">
+        <listOfUnits>
+          <unit kind="metre" exponent="3"/>
+          <unit kind="dimensionless" multiplier="0.001"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWBUILTINPREFIX_micro_MWBUILTINUNIT_liter" name="microliter">
+        <listOfUnits>
+          <unit kind="metre" exponent="3"/>
+          <unit kind="dimensionless" multiplier="1e-09"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_millimeter___3" name="millimeter^3">
+        <listOfUnits>
+          <unit kind="metre" exponent="3"/>
+          <unit kind="dimensionless" multiplier="1e-09"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_micrometer___2" name="micrometer^2">
+        <listOfUnits>
+          <unit kind="metre" exponent="2"/>
+          <unit kind="dimensionless" multiplier="1e-12"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWUSERUNIT_cell" name="cell">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" multiplier="1.66053872801495e-24"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWBUILTINUNIT_molarity" name="molarity">
+        <listOfUnits>
+          <unit kind="metre" exponent="-3"/>
+          <unit kind="mole" exponent="1"/>
+          <unit kind="dimensionless" multiplier="1000"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_molarity_liter" name="(molarity)*(liter)">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_molarity_microliter" name="(molarity)*(microliter)">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" multiplier="1e-06"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_molarity_millimeter___3" name="(molarity)*(millimeter^3)">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" multiplier="1e-06"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_molecule__micrometer___2" name="molecule/micrometer^2">
+        <listOfUnits>
+          <unit kind="metre" exponent="-2"/>
+          <unit kind="mole" exponent="1"/>
+          <unit kind="dimensionless" multiplier="1.66053872801495e-12"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" name="(molecule/micrometer^2)*(micrometer^2)">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" multiplier="1.66053872801495e-24"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__day" name="1/day">
+        <listOfUnits>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="1.15740740740741e-05"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWBUILTINUNIT_day" name="day">
+        <listOfUnits>
+          <unit kind="second" exponent="1" multiplier="86400"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_micrometer___3__cell" name="micrometer^3/cell">
+        <listOfUnits>
+          <unit kind="metre" exponent="3"/>
+          <unit kind="mole" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="602214.199"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_cell__day" name="cell/day">
+        <listOfUnits>
+          <unit kind="mole" exponent="1"/>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="1.92191982409137e-29"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWBUILTINPREFIX_centi_MWBUILTINUNIT_meter" name="centimeter">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" multiplier="0.01"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__day__milliliter" name="1/day/milliliter">
+        <listOfUnits>
+          <unit kind="metre" exponent="-3"/>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="11.5740740740741"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__minute" name="1/minute">
+        <listOfUnits>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="0.0166666666666667"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__centimeter___3_minute" name="1/(centimeter^3*minute)">
+        <listOfUnits>
+          <unit kind="metre" exponent="-3"/>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="16666.6666666667"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_nanomole__cell__hour" name="nanomole/cell/hour">
+        <listOfUnits>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="167281721944.444"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity" name="nanomolarity">
+        <listOfUnits>
+          <unit kind="metre" exponent="-3"/>
+          <unit kind="mole" exponent="1"/>
+          <unit kind="dimensionless" multiplier="1e-06"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__micromolarity_nanometer_second" name="1/(micromolarity*nanometer*second)">
+        <listOfUnits>
+          <unit kind="metre" exponent="2"/>
+          <unit kind="mole" exponent="-1"/>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="1000000000000"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__second" name="1/second">
+        <listOfUnits>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__molarity_second" name="1/(molarity*second)">
+        <listOfUnits>
+          <unit kind="metre" exponent="3"/>
+          <unit kind="mole" exponent="-1"/>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="0.001"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__nanometer" name="1/nanometer">
+        <listOfUnits>
+          <unit kind="metre" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="1000000000"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWBUILTINUNIT_molecule" name="molecule">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" multiplier="1.66053872801495e-24"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91" name="V_C" spatialDimensions="3" size="5" units="MWBUILTINUNIT_liter" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Central compartment (C) Central compartment volume</body>
+        </notes>
+      </compartment>
+      <compartment id="mwafd3bee1_8f17_495c_88c4_da2f69d3d75a" name="V_P" spatialDimensions="3" size="60" units="MWBUILTINUNIT_liter" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Peripheral compartment (P) Peripheral compartment volume</body>
+        </notes>
+      </compartment>
+      <compartment id="mw856ba974_0523_40a6_913a_663f912dbdd2" name="V_T" spatialDimensions="3" size="0.001" units="MWBUILTINPREFIX_micro_MWBUILTINUNIT_liter" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Tumor compartment (T) Cancer-free Tumour compartment volume</body>
+        </notes>
+      </compartment>
+      <compartment id="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" name="V_LN" spatialDimensions="3" size="1374.44678594553" units="MWDERIVEDUNIT_millimeter___3" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Lymph node (LN) compartment volume Lymph Node compartment volume</body>
+        </notes>
+      </compartment>
+      <compartment id="mw952fbf89_2574_41eb_ad74_514d23d98d29" name="syn_T1_C1" spatialDimensions="2" size="37.8" units="MWDERIVEDUNIT_micrometer___2" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">synapse comparment between T1 and C1 Synapse Surface Area</body>
+        </notes>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3" name="nT1" compartment="mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91" initialAmount="2274.77477477477" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of naive T1 cells in the central compartment</body>
+        </notes>
+      </species>
+      <species id="mwf61c296b_7097_4a1b_8f03_2ebc1318ec54" name="T1" compartment="mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T1 cells in the central compartment</body>
+        </notes>
+      </species>
+      <species id="mw8b13b866_6776_4094_821b_9ebbbcbd79b4" name="nT2" compartment="mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91" initialAmount="2274.77477477477" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of naive T2 cells in the central compartment</body>
+        </notes>
+      </species>
+      <species id="mw3c5fee4e_cb42_426c_81d5_01f2d96645f7" name="T2" compartment="mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T2 cells in the central compartment</body>
+        </notes>
+      </species>
+      <species id="mwd153da63_676c_4766_a4e5_8b227ff14cde" name="nivolumab" compartment="mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molarity_liter" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Concentration of nivolumab in central compartment</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molarity"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mw912cfb7a_a6d9_4102_9b65_d6597ba31c67" name="nT1" compartment="mwafd3bee1_8f17_495c_88c4_da2f69d3d75a" initialAmount="113738.738738739" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of naive T1 cells in the peripheral compartment</body>
+        </notes>
+      </species>
+      <species id="mwf537f2bd_de5f_41c8_8a3c_2d08802252bc" name="T1" compartment="mwafd3bee1_8f17_495c_88c4_da2f69d3d75a" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T1 cells in the peripheral compartment</body>
+        </notes>
+      </species>
+      <species id="mw367ce824_b9a9_4f88_a800_ee6dee5ed492" name="nT2" compartment="mwafd3bee1_8f17_495c_88c4_da2f69d3d75a" initialAmount="113738.738738739" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of naive T2 cells in the peripheral compartment</body>
+        </notes>
+      </species>
+      <species id="mwaabcb30d_ea7c_4d21_8f0b_7b68a12f4732" name="T2" compartment="mwafd3bee1_8f17_495c_88c4_da2f69d3d75a" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T2 cells in the peripheral compartment</body>
+        </notes>
+      </species>
+      <species id="mw202b3047_2582_44e3_87ee_841fd26434a8" name="nivolumab" compartment="mwafd3bee1_8f17_495c_88c4_da2f69d3d75a" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molarity_liter" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Concentration of nivolumab in peripheral compartment</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molarity"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mwfd53abab_2e67_4301_8f58_bfb8ed17a555" name="C_x" compartment="mw856ba974_0523_40a6_913a_663f912dbdd2" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Dead cancer cells in the tumour compartment</body>
+        </notes>
+      </species>
+      <species id="mw9de578b3_5712_4e8a_a6d9_94ed82939ce2" name="T_exh" compartment="mw856ba974_0523_40a6_913a_663f912dbdd2" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Exhausted T cells</body>
+        </notes>
+      </species>
+      <species id="mwf407a84d_3754_44bd_a96f_47e522a32c7f" name="C1" compartment="mw856ba974_0523_40a6_913a_663f912dbdd2" initialAmount="1" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of cancer cells in tumour</body>
+        </notes>
+      </species>
+      <species id="mw800b0423_1f76_4d7f_bfc9_501e832c478d" name="C2" compartment="mw856ba974_0523_40a6_913a_663f912dbdd2" initialAmount="1" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of cancer cells in tumour</body>
+        </notes>
+      </species>
+      <species id="mw62d37f45_a1cf_4687_9914_2fe136407806" name="T1" compartment="mw856ba974_0523_40a6_913a_663f912dbdd2" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T1 cells in the tumour compartment</body>
+        </notes>
+      </species>
+      <species id="mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5" name="T2" compartment="mw856ba974_0523_40a6_913a_663f912dbdd2" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T2 cells in the tumour compartment</body>
+        </notes>
+      </species>
+      <species id="mw249af6d1_47f8_4677_9c92_e46f8749b8c7" name="nivolumab" compartment="mw856ba974_0523_40a6_913a_663f912dbdd2" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molarity_microliter" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Concentration of nivolumab in tumour compartment</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molarity"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mwe62c176f_64df_47a4_9369_03b478299d6a" name="nT1" compartment="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" initialAmount="0.0521092812989861" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of naive T1 cells in the lymph node</body>
+        </notes>
+      </species>
+      <species id="mw69c80a5d_614b_44d4_abb6_5cadf232d811" name="aT1" compartment="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of activated T1 cells in the lymph node</body>
+        </notes>
+      </species>
+      <species id="mwf5941d66_a1ad_4c51_86a8_c4f8cd819f0c" name="T1" compartment="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T1 cells in the lymph node compartment</body>
+        </notes>
+      </species>
+      <species id="mwbb30059d_3bff_4f90_98c3_ddd93f81b893" name="IL2" compartment="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" initialConcentration="1e-18" substanceUnits="MWDERIVEDUNIT_molarity_millimeter___3" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Concentration of IL2 in the lymph node compartment</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molarity"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mweb402707_0d1c_4f8b_b5e9_8df5a61a3d3c" name="nT2" compartment="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" initialAmount="0.0521092812989861" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of naive T2 cells in the lymph node</body>
+        </notes>
+      </species>
+      <species id="mw4b104a7c_75f8_4042_ba25_59dd3e8a793b" name="aT2" compartment="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of activated T2 cells in the lymph node</body>
+        </notes>
+      </species>
+      <species id="mwd0714614_cdef_4223_a42d_250884914443" name="T2" compartment="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" initialAmount="0" substanceUnits="MWUSERUNIT_cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T2 cells in the lymph node compartment</body>
+        </notes>
+      </species>
+      <species id="mwb11f1194_ea58_4374_837e_690f93dd72b1" name="nivolumab" compartment="mw34b00a84_bfb2_46ce_8917_4f612ba708e2" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molarity_millimeter___3" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Concentration of nivolumab in lymph node compartment</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molarity"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mwd66d8816_d833_4998_99d9_0b738a849988" name="PD1_PDL1" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PD1-PDL1 complex</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mwf765da98_a1f0_4ddd_a4fe_b41fa93616e7" name="PD1_PDL2" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PD1-PDL2 complex</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mwa30006b6_dab8_4b7c_be30_536d1cb6a289" name="PD1" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PD1 in synapse</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mw23a173d3_5530_4aaa_90ef_6dbc96cbfd8b" name="PDL1" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PDL1 in synapse</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mw26519bfc_35e7_4e7a_9007_4d9f752d9067" name="PDL2" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PDL2 in synapse</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mw0c7c08b7_0692_4ed9_9f62_44900049a61f" name="PD1_aPD1" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PD1-nivolumab complex</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mwef7910b9_bd4e_458f_8971_3a203dd2f5b5" name="PD1_aPD1_PD1" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PD1-nivolumab-PD1 complex</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mwd3a54c86_d7f8_4f4b_97b5_7b29dbcf1975" name="PDL1_aPDL1" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PDL1-durvalumab complex</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+      <species id="mw305c14c0_97d9_4dd8_9c1b_c477fd7eb188" name="PDL1_aPDL1_PDL1" compartment="mw952fbf89_2574_41eb_ad74_514d23d98d29" initialConcentration="0" substanceUnits="MWDERIVEDUNIT_molecule__micrometer___2_micrometer___2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">concentration of PDL1-durvalumab-PDL1 complex</body>
+        </notes>
+        <annotation>
+          <SimBiology xmlns="http://www.mathworks.com">
+            <Unit Numerator="molecule/micrometer^2"/>
+          </SimBiology>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="mw1bc3afe4_1f07_4064_bf57_3de111b74552" name="k_cell_clear" value="0.1" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of dead cell clearance from tumour compartment Rate of clearence of dead cancer cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3" name="cell" value="1" units="MWUSERUNIT_cell" constant="true"/>
+      <parameter id="mwbd44a4a8_e611_4618_92ae_013eb0ba16ef" name="day" value="1" units="MWBUILTINUNIT_day" constant="true"/>
+      <parameter id="mw9b077e91_70ef_4845_a648_b577752dfa00" name="vol_cell" value="2527.31128244685" units="MWDERIVEDUNIT_micrometer___3__cell" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Average volume of cancer cell Volume of a single cancer cell</body>
+        </notes>
+      </parameter>
+      <parameter id="mweb45f6f9_a93a_4954_87a2_40fddebf5a02" name="vol_Tcell" value="176" units="MWDERIVEDUNIT_micrometer___3__cell" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Average volume of T cells Volume of a single T cell</body>
+        </notes>
+      </parameter>
+      <parameter id="mw7e5b04a4_7c13_4f61_a868_dfbce920b2b1" name="V_Tmin" value="0.001" units="MWBUILTINPREFIX_micro_MWBUILTINUNIT_liter" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer-Free Tumour compartment volumeCancer-free Tumour compartment volume</body>
+        </notes>
+      </parameter>
+      <parameter id="mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd" name="C_total" value="0" units="MWUSERUNIT_cell" constant="false"/>
+      <parameter id="mwc24193ec_bca9_410b_b83c_c55224d92932" name="T_total" value="0" units="MWUSERUNIT_cell" constant="false"/>
+      <parameter id="mw61808311_7977_4cc9_9109_032926a5ee12" name="T_total_LN" value="0" units="MWUSERUNIT_cell" constant="false"/>
+      <parameter id="mwc4e9cbf0_0702_46e6_ad13_54cc9d10b6c0" name="R_Tcell" value="1" units="MWDERIVEDUNIT_cell__day" constant="false"/>
+      <parameter id="mwf35e3bbe_3e6f_49f1_b362_12ad223f2903" name="Tregs_" value="0" units="MWUSERUNIT_cell" constant="false"/>
+      <parameter id="mw8eca3930_d2f0_425c_81d0_860c7ccdd390" name="H_APC" value="0.5" units="dimensionless" constant="false"/>
+      <parameter id="mw3e0b87cc_31b8_4076_b09d_163494077f2c" name="H_mAPC" value="1" units="dimensionless" constant="false"/>
+      <parameter id="mwba379191_a617_422d_b427_c444cfc63908" name="H_PD1_C1" value="0.9" units="dimensionless" constant="false"/>
+      <parameter id="mwa147f264_4d24_4406_a7f7_50462b212047" name="H_PD1_APC" value="0.9" units="dimensionless" constant="false"/>
+      <parameter id="mw5211414f_e0a3_427e_881d_c251d188702e" name="H_CD28_C1" value="0.1" units="dimensionless" constant="false"/>
+      <parameter id="mwaf9237c1_2f25_4c3e_bf7c_0e97b4c8da4e" name="H_CD28_APC" value="0.1" units="dimensionless" constant="false"/>
+      <parameter id="mwab42f8dd_fe5d_464b_9d51_c5393daf6796" name="k_C1_growth" value="0.012" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell growth rate Cancer cell growth rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw1487a988_2729_405d_8a00_615e96f13ed9" name="C_max" value="4188790204786.39" units="MWUSERUNIT_cell" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell capacity Cancer cell capacity</body>
+        </notes>
+      </parameter>
+      <parameter id="mw07c8a23f_8f96_4b19_84b9_7aaf16ab7183" name="k_C1_death" value="1e-05" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell death rate from innate immune cells Cancer cell death rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mwd8e5858c_9264_4afb_9088_07dcfa52e164" name="k_C1_therapy" value="0" units="MWDERIVEDUNIT_1__day" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of C1 killing by therapy</body>
+        </notes>
+      </parameter>
+      <parameter id="mwe3eae6d6_0d2c_46e0_a9df_71711bda4f87" name="initial_tumour_diameter" value="3" units="MWBUILTINPREFIX_centi_MWBUILTINUNIT_meter" constant="true"/>
+      <parameter id="mw27e8bff7_1169_4a74_bf73_780198f472c8" name="k_C2_growth" value="0.006" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell growth rate </body>
+        </notes>
+      </parameter>
+      <parameter id="mw82e1d576_4415_4a12_bd16_b0d408b6dc2c" name="k_C2_death" value="1e-05" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell death rate from innate immune cells Cancer cell death rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw59dd5f17_33e3_4002_85f9_ecdd3f170e52" name="k_C2_therapy" value="0" units="MWDERIVEDUNIT_1__day" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of C2 killing by therapy</body>
+        </notes>
+      </parameter>
+      <parameter id="mwf115e847_e0e1_48d3_ac6a_220005db6ab9" name="div_T1" value="1110000" units="dimensionless" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T Cell Diversity T cell Diversity</body>
+        </notes>
+      </parameter>
+      <parameter id="mwf0e50196_6fc8_494e_b77a_4efb8257facd" name="n_T1_clones" value="100" units="dimensionless" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T cell clones T cell Clonality</body>
+        </notes>
+      </parameter>
+      <parameter id="mw6b0b0c07_6f2e_4318_942e_664805ae7c44" name="q_LN_T1_in" value="0.07" units="MWDERIVEDUNIT_1__day__milliliter" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of naive T cell transport into the LN Rate of T Cell Lymph Node Entry</body>
+        </notes>
+      </parameter>
+      <parameter id="mw55484423_5bc2_4b38_a328_50129432493f" name="q_T1_LN_out" value="1.13" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of naive T cell transport out of the LN Rate of T Cell Lymph Node Exit</body>
+        </notes>
+      </parameter>
+      <parameter id="mwfa3f3d99_b3d0_449a_83c3_9fd1d149571c" name="k_T1_act" value="10" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T1 activation rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw74546e1a_4eff_4de4_b014_4f64a7221d20" name="k_T1_pro" value="1" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T1 proliferation rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mwa62710ce_8ec5_4f83_ad59_957ffc68957f" name="k_T1_death" value="0.01" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T1 death rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mwe9fd90a3_1743_44d0_985f_fb881699efbb" name="q_T1_P_in" value="0.201" units="MWDERIVEDUNIT_1__minute" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of T1 tranport into the peripheral compartment</body>
+        </notes>
+      </parameter>
+      <parameter id="mwb4fb32e0_277e_44a3_bf98_ed32aa95cd8c" name="q_T1_P_out" value="1" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of T1 tranport out of the peripheral compartment</body>
+        </notes>
+      </parameter>
+      <parameter id="mwb562d920_cd50_4a39_91a9_301bc07f34c0" name="q_T1_T_in" value="3.35e-06" units="MWDERIVEDUNIT_1__centimeter___3_minute" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of T1 tranport into the tumour compartment</body>
+        </notes>
+      </parameter>
+      <parameter id="mwd4757fc6_8f00_4aee_ac69_6cda63888a21" name="Q_nT1_thym" value="3200000000" units="MWDERIVEDUNIT_cell__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Thymic output of nT1 Rate of Naive T Cell Output from the Thymus</body>
+        </notes>
+      </parameter>
+      <parameter id="mwce04e1f4_cac3_4e36_8d51_edc8c8bc35c4" name="k_nT1_pro" value="320000000" units="MWDERIVEDUNIT_cell__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of nT1 proliferation Rate of Naive T Cell Proliferation</body>
+        </notes>
+      </parameter>
+      <parameter id="mwad9a3a4a_529c_4d17_a785_bd8914dba6c0" name="K_nT1_pro" value="1000000000" units="MWUSERUNIT_cell" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">half-maximal peripheral proliferation of of nT1 Naive T cell Density for Half-Maximal Peripheral Proliferation</body>
+        </notes>
+      </parameter>
+      <parameter id="mw238b0100_e9dc_4b76_a65d_6bef4868c9ae" name="k_nT1_death" value="0.002" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of nT1 death Rate of Naive T Cell Death</body>
+        </notes>
+      </parameter>
+      <parameter id="mwf572ac84_31a0_477f_ac7f_e40eff0b9ec6" name="k_IL2_deg" value="0.2" units="MWDERIVEDUNIT_1__minute" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of IL2 degradation IL2 Degradation Rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw545aa518_1130_4be7_855d_cb5ae48f7370" name="k_IL2_cons" value="6e-06" units="MWDERIVEDUNIT_nanomole__cell__hour" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of IL2 consumption by T cells IL2 Maximum Consumption Rate by T Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mweb8974da_9d87_48ab_abea_97a83909edd0" name="k_IL2_sec" value="3e-05" units="MWDERIVEDUNIT_nanomole__cell__hour" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of IL2 secretion from T cells IL2 Secretion Rate from Activated T Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mwf7a5b4f2_fce7_4ecc_8ce8_ea3e4651a6d3" name="IL2_50" value="0.32" units="MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell activation half-maximal IL2 concentration IL2 Concentration for Half-Maximal Consumption by Cytotoxic T Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mw86076278_2e95_4890_8d98_1f44f84d0441" name="IL2_50_Treg" value="0.0032" units="MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Treg activation half-maximal IL2 concentration IL2 Concentration for Half-Maximal Consumption by Tregs</body>
+        </notes>
+      </parameter>
+      <parameter id="mw5327b5f9_db76_4bcf_b9a6_6b7b11918b25" name="N0" value="15" units="dimensionless" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">numer of activated T cell generation with no IL2 Baseline Number of Activated T Cell Generations</body>
+        </notes>
+      </parameter>
+      <parameter id="mw394d2247_2ab4_437d_92a5_5ecd2f6fc59d" name="N_IL2" value="2" units="dimensionless" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">maximum number of activated T cell generations due to IL2 Additional Number of Activated T Cell Generations Due to IL2</body>
+        </notes>
+      </parameter>
+      <parameter id="mwe565714f_047f_4c94_ba4a_d0002b306a54" name="k_T1" value="0.1" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of T cell exhaustion by cancer cells Rate of T Cell Exhaustion from Cancer Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mwa9922ff5_b8df_4a7c_a2c5_751186650773" name="k_C_T1" value="0.09" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of cancer cell death by T cells Cancer Cell Death Rate due to T Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mw9327bfe0_7447_49df_a249_7c43b9c651e2" name="k_Treg" value="2" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of T cell death by Tregs Rate of T Cell Exhaustion from Tregs</body>
+        </notes>
+      </parameter>
+      <parameter id="mwcda76c14_0f23_4866_9ce8_75d2db33bbf1" name="H_P1" value="1" units="dimensionless" constant="false"/>
+      <parameter id="mwadac2ac5_66b2_4fab_8ba4_59cd08034227" name="N_aT" value="1" units="dimensionless" constant="false"/>
+      <parameter id="mw9e7e5c5e_87a6_4d3d_a8cb_b49577cec5c5" name="div_T2" value="1110000" units="dimensionless" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T Cell Diversity T cell Diversity</body>
+        </notes>
+      </parameter>
+      <parameter id="mwd7c4051e_d19d_4003_a388_764d84cdc196" name="n_T2_clones" value="100" units="dimensionless" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of T cell clones T cell Clonality</body>
+        </notes>
+      </parameter>
+      <parameter id="mw2a16f8a4_1485_4811_a257_27e69a520976" name="q_LN_T2_in" value="0.07" units="MWDERIVEDUNIT_1__day__milliliter" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of naive T cell transport into the LN Rate of T Cell Lymph Node Entry</body>
+        </notes>
+      </parameter>
+      <parameter id="mw7b1bc5f9_6f4a_4bf2_b1f1_e290f999d0cd" name="q_T2_LN_out" value="1.13" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of naive T cell transport out of the LN Rate of T Cell Lymph Node Exit</body>
+        </notes>
+      </parameter>
+      <parameter id="mw3684f654_91e8_4ad2_8315_c4a7d2e7c700" name="k_T2_act" value="10" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T2 activation rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw5b796b6e_d7c8_4639_81c6_4998bdee982b" name="k_T2_pro" value="1" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T2 proliferation rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mwb3f71280_493c_4703_9108_b9e471dcfa30" name="k_T2_death" value="0.01" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T2 death rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mwbb024286_be41_4282_bbdb_baf0c9639e76" name="q_T2_P_in" value="0.201" units="MWDERIVEDUNIT_1__minute" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of T2 tranport into the peripheral compartment</body>
+        </notes>
+      </parameter>
+      <parameter id="mw8195b8ca_4e48_4b52_b961_aeb7d94996fb" name="q_T2_P_out" value="1" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of T2 tranport out of the peripheral compartment</body>
+        </notes>
+      </parameter>
+      <parameter id="mw177bcd69_d7d8_46cf_b062_336ac3af1fe4" name="q_T2_T_in" value="3.35e-06" units="MWDERIVEDUNIT_1__centimeter___3_minute" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of T2 tranport into the tumour compartment</body>
+        </notes>
+      </parameter>
+      <parameter id="mw223c14c2_740c_4255_bfa0_ee142c1e3901" name="Q_nT2_thym" value="3200000000" units="MWDERIVEDUNIT_cell__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Thymic output of nT2 Rate of Naive T Cell Output from the Thymus</body>
+        </notes>
+      </parameter>
+      <parameter id="mw04d4c0a5_f2f6_4eaa_b1a1_1749311c70d3" name="k_nT2_pro" value="320000000" units="MWDERIVEDUNIT_cell__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of nT2 proliferation Rate of Naive T Cell Proliferation</body>
+        </notes>
+      </parameter>
+      <parameter id="mw127b1aba_7eef_4864_b2a2_8464b869d713" name="K_nT2_pro" value="1000000000" units="MWUSERUNIT_cell" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">half-maximal peripheral proliferation of of nT2 Naive T cell Density for Half-Maximal Peripheral Proliferation</body>
+        </notes>
+      </parameter>
+      <parameter id="mw7425ec0a_e323_4be5_9167_e4918f45eb63" name="k_nT2_death" value="0.002" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">rate of nT2 death Rate of Naive T Cell Death</body>
+        </notes>
+      </parameter>
+      <parameter id="mw6752ddfc_7e08_45a7_a2b6_f3f7063b4ce0" name="k_T2" value="0.1" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of T cell exhaustion by cancer cells Rate of T Cell Exhaustion from Cancer Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mwc47230bc_dfcb_4636_9bee_0796edb19600" name="k_C_T2" value="0.009" units="MWDERIVEDUNIT_1__day" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate of cancer cell death by T cells </body>
+        </notes>
+      </parameter>
+      <parameter id="mw80d416c0_059c_4559_90bd_df42a49858e3" name="H_P2" value="1" units="dimensionless" constant="false"/>
+      <parameter id="mwde3ab5cc_2309_4e4c_9188_8053a2e52bca" name="A_syn" value="37.8" units="MWDERIVEDUNIT_micrometer___2" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Surface area of the synapse Synapse Surface Area</body>
+        </notes>
+      </parameter>
+      <parameter id="mw4970f571_80e0_4e20_9c38_a9776f7030a8" name="A_Tcell" value="151.310411930437" units="MWDERIVEDUNIT_micrometer___2" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Surface area of the T cell T Cell Surface Area</body>
+        </notes>
+      </parameter>
+      <parameter id="mw9ca30318_9838_4203_9376_7ec059ad911a" name="A_cell" value="897.270277791781" units="MWDERIVEDUNIT_micrometer___2" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Surface area of the Cancer cell Cancer Cell Surface Area</body>
+        </notes>
+      </parameter>
+      <parameter id="mw570801bc_df62_4e00_b710_786b416fea6f" name="A_APC" value="900" units="MWDERIVEDUNIT_micrometer___2" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Surface area of the APC APC Surface Area</body>
+        </notes>
+      </parameter>
+      <parameter id="mw8b13dfaf_bbf2_4cb0_adde_b3a5d5241fdb" name="kon_PD1_PDL1" value="0.0583333333333333" units="MWDERIVEDUNIT_1__micromolarity_nanometer_second" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">kon of PD1-PDL1 binding PD1-PDL1 Binding Rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw3f45fe04_d216_4ab0_899e_348be86e7f04" name="aPD1" value="0" units="MWBUILTINUNIT_molarity" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Concentration of PD1 antibody</body>
+        </notes>
+      </parameter>
+      <parameter id="mw67ae919f_a45a_49a4_86a3_001df8d8f69e" name="aPDL1" value="0" units="MWBUILTINUNIT_molarity" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Concentration of PDL1 antibody</body>
+        </notes>
+      </parameter>
+      <parameter id="mw99789de3_3eb3_4a26_b3f0_d7d594d51b26" name="q_P_nivolumab" value="1.73655e-07" units="MWDERIVEDUNIT_1__second" constant="true"/>
+      <parameter id="mw1c153fb9_d94f_4919_b050_7bacea8d528b" name="q_T_nivolumab" value="8.52e-06" units="MWDERIVEDUNIT_1__second" constant="true"/>
+      <parameter id="mwcc23be2e_786d_4265_aaa2_168006d75924" name="q_LN_nivolumab" value="1.73655e-07" units="MWDERIVEDUNIT_1__second" constant="true"/>
+      <parameter id="mwe85f0dc2_ad60_492c_ac2a_5dd67b906b5a" name="q_LD_nivolumab" value="0.0015" units="MWDERIVEDUNIT_1__minute" constant="true"/>
+      <parameter id="mw4efa3679_0eb7_4a4c_ba52_8bee93f7fcb9" name="k_cl_nivolumab" value="7.1813e-07" units="MWDERIVEDUNIT_1__second" constant="true"/>
+      <parameter id="mw15cd9584_a054_40bc_a2ac_7453c53dd8b3" name="gamma_C_nivolumab" value="0.77378" units="dimensionless" constant="true"/>
+      <parameter id="mwe373af3a_33b6_4785_a101_074c1d2ed93a" name="gamma_P_nivolumab" value="0.058847" units="dimensionless" constant="true"/>
+      <parameter id="mw4e94f682_88e8_4cae_868a_d3649139c711" name="gamma_T_nivolumab" value="0.718" units="dimensionless" constant="true"/>
+      <parameter id="mw9158281d_272a_4327_ae2c_632b46c8e81d" name="gamma_LN_nivolumab" value="0.1" units="dimensionless" constant="true"/>
+      <parameter id="mw3f5bdedc_979e_49a4_826a_02ada05fb996" name="kon_PD1_PDL2" value="0.0766666666666667" units="MWDERIVEDUNIT_1__micromolarity_nanometer_second" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">kon of PD1-PDL2 binding PD1-PDL2 Binding Rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw50fd1988_bf9f_464a_a5ff_c8ba4c5d4970" name="kon_PD1_aPD1" value="1300000" units="MWDERIVEDUNIT_1__molarity_second" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">kon of PD1-antiPD1 binding PD1-nivolumab Binding Rate Constant</body>
+        </notes>
+      </parameter>
+      <parameter id="mw9795db5c_dd12_4511_9a62_f87fb5e756e5" name="kon_PDL1_aPDL1" value="430000" units="MWDERIVEDUNIT_1__molarity_second" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">kon of PDL1-antiPDL1 binding PDL1-durvalumab Binding Rate Constant</body>
+        </notes>
+      </parameter>
+      <parameter id="mw9bcbcdbe_ce27_486e_a3f0_d492e45e6e4d" name="koff_PD1_PDL1" value="1.435" units="MWDERIVEDUNIT_1__second" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">koff of PD1-PDL1 binding PD1-PDL1 Unbinding Rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw9187b54e_435e_43f4_9b6d_2c35693c395a" name="koff_PD1_PDL2" value="0.529" units="MWDERIVEDUNIT_1__second" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">koff of PD1-PDL2 binding PD1-PDL2 Unbinding Rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mwe9557bc3_3398_4c42_943e_4c19d8a8fe6e" name="koff_PD1_aPD1" value="0.00338" units="MWDERIVEDUNIT_1__second" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">koff of PD1-nivolumab binding PD1-aPD1 Unbinding Rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mw716dabe9_24a0_4bf0_ba80_6cc190d57ffa" name="koff_PDL1_aPDL1" value="0.028595" units="MWDERIVEDUNIT_1__second" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">koff of PDL1-durvalumab binding PDL1-aPDL1 Unbinding Rate</body>
+        </notes>
+      </parameter>
+      <parameter id="mwb7dab7e1_6071_41f2_a190_87bda80ede15" name="Chi_PD1" value="3.33333333333333" units="MWDERIVEDUNIT_1__nanometer" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Antibody cross-arm binding efficiency PD1 Antibody Cross-Arm Binding Strength Corrected for 2D</body>
+        </notes>
+      </parameter>
+      <parameter id="mwbb4ac7a0_f1b0_4784_a1df_27c3534ec994" name="Chi_PDL1" value="33.3333333333333" units="MWDERIVEDUNIT_1__nanometer" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Antibody cross-arm binding efficiency PDL1 Antibody Cross-Arm Binding Strength Corrected for 2D</body>
+        </notes>
+      </parameter>
+      <parameter id="mwc8e07311_c279_431c_b881_9b1548f15800" name="PD1_50" value="100" units="MWDERIVEDUNIT_molecule__micrometer___2" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">PD1/PDL1 concentration for half-maximal T cell inactivation PD1-PDL1 Concentration for Half-Maximal PD1-Induced Reduction of T Cell Killing</body>
+        </notes>
+      </parameter>
+      <parameter id="mwf19bd07f_7477_414f_b583_7f8b1d28210a" name="n_PD1" value="2" units="dimensionless" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Hill coefficient for PD1/PDL1 half-maximal T cell inactivation Hill Coefficient for PD1-Induced Reduction of T Cell Killing</body>
+        </notes>
+      </parameter>
+      <parameter id="mw2d701400_28a1_4fd4_894e_1c117ffa9e17" name="T_PD1_total" value="60000" units="MWBUILTINUNIT_molecule" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Concentration of PD1 on T cells Total number of PD1 Molecules on T Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mwd5698a36_58fd_4420_a332_87306cfc5bf0" name="C_PDL1_total" value="1600000" units="MWBUILTINUNIT_molecule" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of PDL1 molecules per cancer cell Total number of PDL1 Molecules on Cancer Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mwf35e1c6f_16c9_4fbd_aca8_66c478dced0c" name="C_PDL2_total" value="40000" units="MWBUILTINUNIT_molecule" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of PDL2 molecules per cancer cell Total number of PDL2 Molecules on Cancer Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mw2d438501_e847_4b10_937f_4608bc81986a" name="APC_PDL1_total" value="1600000" units="MWBUILTINUNIT_molecule" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of PDL1 molecules per APC Total number of PDL1 Molecules on Cancer Cells</body>
+        </notes>
+      </parameter>
+      <parameter id="mw5b8afa17_69c5_4ce6_ad52_03bdb41be0ab" name="APC_PDL2_total" value="40000" units="MWBUILTINUNIT_molecule" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of PDL2 molecules per APC Total number of PDL2 Molecules on APCs</body>
+        </notes>
+      </parameter>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="mwa30006b6_dab8_4b7c_be30_536d1cb6a289">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> mw2d701400_28a1_4fd4_894e_1c117ffa9e17 </ci>
+            <ci> mw4970f571_80e0_4e20_9c38_a9776f7030a8 </ci>
+          </apply>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="mw23a173d3_5530_4aaa_90ef_6dbc96cbfd8b">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> mwd5698a36_58fd_4420_a332_87306cfc5bf0 </ci>
+            <ci> mw9ca30318_9838_4203_9376_7ec059ad911a </ci>
+          </apply>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="mw26519bfc_35e7_4e7a_9007_4d9f752d9067">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> mwf35e1c6f_16c9_4fbd_aca8_66c478dced0c </ci>
+            <ci> mw9ca30318_9838_4203_9376_7ec059ad911a </ci>
+          </apply>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfRules>
+      <assignmentRule variable="mw856ba974_0523_40a6_913a_663f912dbdd2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> mw7e5b04a4_7c13_4f61_a868_dfbce920b2b1 </ci>
+            <apply>
+              <times/>
+              <ci> mw9b077e91_70ef_4845_a648_b577752dfa00 </ci>
+              <ci> mwfd53abab_2e67_4301_8f58_bfb8ed17a555 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mweb45f6f9_a93a_4954_87a2_40fddebf5a02 </ci>
+              <ci> mw9de578b3_5712_4e8a_a6d9_94ed82939ce2 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mw9b077e91_70ef_4845_a648_b577752dfa00 </ci>
+              <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mw9b077e91_70ef_4845_a648_b577752dfa00 </ci>
+              <ci> mw800b0423_1f76_4d7f_bfc9_501e832c478d </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mweb45f6f9_a93a_4954_87a2_40fddebf5a02 </ci>
+              <ci> mw62d37f45_a1cf_4687_9914_2fe136407806 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mweb45f6f9_a93a_4954_87a2_40fddebf5a02 </ci>
+              <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <cn type="integer"> 0 </cn>
+              <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+            </apply>
+            <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+            <ci> mw800b0423_1f76_4d7f_bfc9_501e832c478d </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="mwc24193ec_bca9_410b_b83c_c55224d92932">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <cn type="integer"> 0 </cn>
+              <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+            </apply>
+            <ci> mw62d37f45_a1cf_4687_9914_2fe136407806 </ci>
+            <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="mw61808311_7977_4cc9_9109_032926a5ee12">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <cn type="integer"> 0 </cn>
+              <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+            </apply>
+            <ci> mwf5941d66_a1ad_4c51_86a8_c4f8cd819f0c </ci>
+            <ci> mwd0714614_cdef_4223_a42d_250884914443 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="mwc4e9cbf0_0702_46e6_ad13_54cc9d10b6c0">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+              </apply>
+              <ci> mwbd44a4a8_e611_4618_92ae_013eb0ba16ef </ci>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwa9922ff5_b8df_4a7c_a2c5_751186650773 </ci>
+                  <ci> mw62d37f45_a1cf_4687_9914_2fe136407806 </ci>
+                  <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                  <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <ci> mwba379191_a617_422d_b427_c444cfc63908 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwc47230bc_dfcb_4636_9bee_0796edb19600 </ci>
+                  <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+                  <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                  <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <ci> mwba379191_a617_422d_b427_c444cfc63908 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwc47230bc_dfcb_4636_9bee_0796edb19600 </ci>
+                  <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+                  <ci> mw800b0423_1f76_4d7f_bfc9_501e832c478d </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                  <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <ci> mwba379191_a617_422d_b427_c444cfc63908 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="mwadac2ac5_66b2_4fab_8ba4_59cd08034227">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> mw5327b5f9_db76_4bcf_b9a6_6b7b11918b25 </ci>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw394d2247_2ab4_437d_92a5_5ecd2f6fc59d </ci>
+                <ci> mwbb30059d_3bff_4f90_98c3_ddd93f81b893 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwf7a5b4f2_fce7_4ecc_8ce8_ea3e4651a6d3 </ci>
+                <ci> mwbb30059d_3bff_4f90_98c3_ddd93f81b893 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="mw3f45fe04_d216_4ab0_899e_348be86e7f04">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> mw249af6d1_47f8_4677_9c92_e46f8749b8c7 </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="mwba379191_a617_422d_b427_c444cfc63908">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <power/>
+              <apply>
+                <divide/>
+                <apply>
+                  <plus/>
+                  <ci> mwd66d8816_d833_4998_99d9_0b738a849988 </ci>
+                  <ci> mwf765da98_a1f0_4ddd_a4fe_b41fa93616e7 </ci>
+                </apply>
+                <ci> mwc8e07311_c279_431c_b881_9b1548f15800 </ci>
+              </apply>
+              <ci> mwf19bd07f_7477_414f_b583_7f8b1d28210a </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <plus/>
+                    <ci> mwd66d8816_d833_4998_99d9_0b738a849988 </ci>
+                    <ci> mwf765da98_a1f0_4ddd_a4fe_b41fa93616e7 </ci>
+                  </apply>
+                  <ci> mwc8e07311_c279_431c_b881_9b1548f15800 </ci>
+                </apply>
+                <ci> mwf19bd07f_7477_414f_b583_7f8b1d28210a </ci>
+              </apply>
+              <cn type="integer"> 1 </cn>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="mw1e44d4b1_7b23_427a_865a_364b5216c2a0" name="Reaction_1" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mwfd53abab_2e67_4301_8f58_bfb8ed17a555" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw1bc3afe4_1f07_4064_bf57_3de111b74552 </ci>
+              <ci> mwfd53abab_2e67_4301_8f58_bfb8ed17a555 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe7718f8e_8543_481d_a68a_1a4d56e72899" name="Reaction_2" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mw9de578b3_5712_4e8a_a6d9_94ed82939ce2" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw1bc3afe4_1f07_4064_bf57_3de111b74552 </ci>
+              <ci> mw9de578b3_5712_4e8a_a6d9_94ed82939ce2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwcbe22665_2f9c_44e0_8f83_18de25c82bd0" name="Reaction_3" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell growth (Logistic model based on Komarova and reviewed in Marusic)</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mwf407a84d_3754_44bd_a96f_47e522a32c7f" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwab42f8dd_fe5d_464b_9d51_c5393daf6796 </ci>
+              <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mw1487a988_2729_405d_8a00_615e96f13ed9 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc762cd8c_f2ee_4413_a486_c2809ab33f5c" name="Reaction_4" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell death</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf407a84d_3754_44bd_a96f_47e522a32c7f" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwfd53abab_2e67_4301_8f58_bfb8ed17a555" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw07c8a23f_8f96_4b19_84b9_7aaf16ab7183 </ci>
+              <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw6da98147_4208_47fd_8355_276d075a2565" name="Reaction_5" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell growth (Logistic model based on Komarova and reviewed in Marusic)</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw800b0423_1f76_4d7f_bfc9_501e832c478d" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw27e8bff7_1169_4a74_bf73_780198f472c8 </ci>
+              <ci> mw800b0423_1f76_4d7f_bfc9_501e832c478d </ci>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mw1487a988_2729_405d_8a00_615e96f13ed9 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw0be62bb2_8495_448a_9b37_ddc9366bb05b" name="Reaction_6" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell death</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw800b0423_1f76_4d7f_bfc9_501e832c478d" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwfd53abab_2e67_4301_8f58_bfb8ed17a555" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw82e1d576_4415_4a12_bd16_b0d408b6dc2c </ci>
+              <ci> mw800b0423_1f76_4d7f_bfc9_501e832c478d </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa6e20d5e_30e4_4e64_a9d7_34f6674023e1" name="Reaction_7" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Thymic output of naive T cell to blood</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <ci> mwd4757fc6_8f00_4aee_ac69_6cda63888a21 </ci>
+              <ci> mwf115e847_e0e1_48d3_ac6a_220005db6ab9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw5a2d9aec_32b3_43c4_84d6_849ba2b59bd9" name="Reaction_8" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell proliferation in the peripheral compartment</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw912cfb7a_a6d9_4102_9b65_d6597ba31c67" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <ci> mwce04e1f4_cac3_4e36_8d51_edc8c8bc35c4 </ci>
+                  <ci> mwf115e847_e0e1_48d3_ac6a_220005db6ab9 </ci>
+                </apply>
+                <ci> mw912cfb7a_a6d9_4102_9b65_d6597ba31c67 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> mwad9a3a4a_529c_4d17_a785_bd8914dba6c0 </ci>
+                  <ci> mwf115e847_e0e1_48d3_ac6a_220005db6ab9 </ci>
+                </apply>
+                <ci> mw912cfb7a_a6d9_4102_9b65_d6597ba31c67 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw16e4d805_2253_44f2_9269_cd7926207b04" name="Reaction_9" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell proliferation in the central compartment</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <ci> mwce04e1f4_cac3_4e36_8d51_edc8c8bc35c4 </ci>
+                  <ci> mwf115e847_e0e1_48d3_ac6a_220005db6ab9 </ci>
+                </apply>
+                <ci> mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> mwad9a3a4a_529c_4d17_a785_bd8914dba6c0 </ci>
+                  <ci> mwf115e847_e0e1_48d3_ac6a_220005db6ab9 </ci>
+                </apply>
+                <ci> mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3244ef4c_f0ee_4a74_a741_9517c5976ddb" name="Reaction_10" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell death in the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw912cfb7a_a6d9_4102_9b65_d6597ba31c67" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw238b0100_e9dc_4b76_a65d_6bef4868c9ae </ci>
+              <ci> mw912cfb7a_a6d9_4102_9b65_d6597ba31c67 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw498f210e_8b16_44c9_91a8_030929d21844" name="Reaction_11" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell death in the central compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw238b0100_e9dc_4b76_a65d_6bef4868c9ae </ci>
+              <ci> mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw189f0df5_f1ff_475d_8223_c4b4c637a8fd" name="Reaction_12" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell entry into the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw912cfb7a_a6d9_4102_9b65_d6597ba31c67" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwe9fd90a3_1743_44d0_985f_fb881699efbb </ci>
+              <ci> mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwbb472f11_663b_4dc6_a804_9fac7b7184e5" name="Reaction_13" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell exit from the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw912cfb7a_a6d9_4102_9b65_d6597ba31c67" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb4fb32e0_277e_44a3_bf98_ed32aa95cd8c </ci>
+              <ci> mw912cfb7a_a6d9_4102_9b65_d6597ba31c67 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3e63ca3e_fd9a_4e10_8e71_8560f61733a2" name="Reaction_14" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell entry into the lymph node</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwe62c176f_64df_47a4_9369_03b478299d6a" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw6b0b0c07_6f2e_4318_942e_664805ae7c44 </ci>
+              <ci> mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3 </ci>
+              <ci> mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwdd0d6181_6e0f_406e_84a2_02de12d9d0ef" name="Reaction_15" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell exit from the lymph node</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwe62c176f_64df_47a4_9369_03b478299d6a" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw90a6bedc_862c_4b53_9ef6_47aa3e9c8ed3" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw55484423_5bc2_4b38_a328_50129432493f </ci>
+              <ci> mwe62c176f_64df_47a4_9369_03b478299d6a </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw0175fc21_69b7_4be4_bc29_795e7e460a0e" name="Reaction_16" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell activation</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwe62c176f_64df_47a4_9369_03b478299d6a" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwfa3f3d99_b3d0_449a_83c3_9fd1d149571c </ci>
+              <ci> mw3e0b87cc_31b8_4076_b09d_163494077f2c </ci>
+              <ci> mwcda76c14_0f23_4866_9ce8_75d2db33bbf1 </ci>
+              <ci> mwe62c176f_64df_47a4_9369_03b478299d6a </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwdde9e77a_a9d9_4b94_965f_92fdb5579e42" name="Reaction_17" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell activation</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw69c80a5d_614b_44d4_abb6_5cadf232d811" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwfa3f3d99_b3d0_449a_83c3_9fd1d149571c </ci>
+              <ci> mw3e0b87cc_31b8_4076_b09d_163494077f2c </ci>
+              <ci> mwcda76c14_0f23_4866_9ce8_75d2db33bbf1 </ci>
+              <ci> mwe62c176f_64df_47a4_9369_03b478299d6a </ci>
+              <ci> mwf0e50196_6fc8_494e_b77a_4efb8257facd </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw9074fa31_fe34_41cb_8e09_b23d6b114850" name="Reaction_18" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">aT1 cell proliferation</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw69c80a5d_614b_44d4_abb6_5cadf232d811" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw74546e1a_4eff_4de4_b014_4f64a7221d20 </ci>
+              <ci> mw69c80a5d_614b_44d4_abb6_5cadf232d811 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw11c94af4_4048_4070_84c7_9ff8fbbff02d" name="Reaction_19" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">aT1 cell proliferation</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mwf5941d66_a1ad_4c51_86a8_c4f8cd819f0c" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw74546e1a_4eff_4de4_b014_4f64a7221d20 </ci>
+              <apply>
+                <power/>
+                <cn type="integer"> 2 </cn>
+                <ci> mwadac2ac5_66b2_4fab_8ba4_59cd08034227 </ci>
+              </apply>
+              <ci> mw69c80a5d_614b_44d4_abb6_5cadf232d811 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw5006e2d6_1315_4f65_936c_e34f8e045776" name="Reaction_20" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death in the central compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf61c296b_7097_4a1b_8f03_2ebc1318ec54" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwa62710ce_8ec5_4f83_ad59_957ffc68957f </ci>
+              <ci> mwf61c296b_7097_4a1b_8f03_2ebc1318ec54 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw92e9d9d7_6788_4e0d_983c_199d9497cfbc" name="Reaction_21" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death in the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf537f2bd_de5f_41c8_8a3c_2d08802252bc" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwa62710ce_8ec5_4f83_ad59_957ffc68957f </ci>
+              <ci> mwf537f2bd_de5f_41c8_8a3c_2d08802252bc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw464d3c80_0f10_4650_bdca_15b7c0575211" name="Reaction_22" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death in the tumour compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw62d37f45_a1cf_4687_9914_2fe136407806" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9de578b3_5712_4e8a_a6d9_94ed82939ce2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwa62710ce_8ec5_4f83_ad59_957ffc68957f </ci>
+              <ci> mw62d37f45_a1cf_4687_9914_2fe136407806 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf5145395_b272_4e3e_8626_662c14ac6fb8" name="Reaction_23" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death in the lymph node compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf5941d66_a1ad_4c51_86a8_c4f8cd819f0c" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwa62710ce_8ec5_4f83_ad59_957ffc68957f </ci>
+              <ci> mwf5941d66_a1ad_4c51_86a8_c4f8cd819f0c </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa09cf52b_6a13_4434_982d_d23ba8bd6bff" name="Reaction_24" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death from Tregs</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw62d37f45_a1cf_4687_9914_2fe136407806" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9de578b3_5712_4e8a_a6d9_94ed82939ce2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw9327bfe0_7447_49df_a249_7c43b9c651e2 </ci>
+                <ci> mw62d37f45_a1cf_4687_9914_2fe136407806 </ci>
+                <ci> mwf35e3bbe_3e6f_49f1_b362_12ad223f2903 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw0f3c47da_6463_45f3_8540_f769d41c7523" name="Reaction_25" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death from cancer</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw62d37f45_a1cf_4687_9914_2fe136407806" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9de578b3_5712_4e8a_a6d9_94ed82939ce2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwe565714f_047f_4c94_ba4a_d0002b306a54 </ci>
+                  <ci> mw62d37f45_a1cf_4687_9914_2fe136407806 </ci>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                  <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+                </apply>
+              </apply>
+              <ci> mwba379191_a617_422d_b427_c444cfc63908 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw158c772a_f42b_42ca_bd65_7b74242d687b" name="Reaction_26" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell transport into the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf61c296b_7097_4a1b_8f03_2ebc1318ec54" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwf537f2bd_de5f_41c8_8a3c_2d08802252bc" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwe9fd90a3_1743_44d0_985f_fb881699efbb </ci>
+              <ci> mwf61c296b_7097_4a1b_8f03_2ebc1318ec54 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb8d7c2e1_24ad_402c_906d_1d143e3a3fdd" name="Reaction_27" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell transport out of the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf537f2bd_de5f_41c8_8a3c_2d08802252bc" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwf61c296b_7097_4a1b_8f03_2ebc1318ec54" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb4fb32e0_277e_44a3_bf98_ed32aa95cd8c </ci>
+              <ci> mwf537f2bd_de5f_41c8_8a3c_2d08802252bc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw42468a87_98c8_451a_abed_bc66718ce26b" name="Reaction_28" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell transport into the tumour compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf61c296b_7097_4a1b_8f03_2ebc1318ec54" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw62d37f45_a1cf_4687_9914_2fe136407806" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb562d920_cd50_4a39_91a9_301bc07f34c0 </ci>
+              <ci> mw856ba974_0523_40a6_913a_663f912dbdd2 </ci>
+              <ci> mwf61c296b_7097_4a1b_8f03_2ebc1318ec54 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4a539166_1833_4251_b217_987a25e68c3e" name="Reaction_29" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell transport out of the lymph node compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf5941d66_a1ad_4c51_86a8_c4f8cd819f0c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwf61c296b_7097_4a1b_8f03_2ebc1318ec54" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw55484423_5bc2_4b38_a328_50129432493f </ci>
+              <ci> mwf5941d66_a1ad_4c51_86a8_c4f8cd819f0c </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw9759505b_0f36_4aab_a92d_d9f868ef8daf" name="Reaction_30" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">IL2 degradation</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwbb30059d_3bff_4f90_98c3_ddd93f81b893" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwf572ac84_31a0_477f_ac7f_e40eff0b9ec6 </ci>
+              <ci> mwbb30059d_3bff_4f90_98c3_ddd93f81b893 </ci>
+              <ci> mw34b00a84_bfb2_46ce_8917_4f612ba708e2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1b9c64fa_2928_40e0_b4b9_2e8d75552acb" name="Reaction_31" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">IL2 consumption by T cells</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwbb30059d_3bff_4f90_98c3_ddd93f81b893" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw545aa518_1130_4be7_855d_cb5ae48f7370 </ci>
+                <ci> mw61808311_7977_4cc9_9109_032926a5ee12 </ci>
+                <ci> mwbb30059d_3bff_4f90_98c3_ddd93f81b893 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwf7a5b4f2_fce7_4ecc_8ce8_ea3e4651a6d3 </ci>
+                <ci> mwbb30059d_3bff_4f90_98c3_ddd93f81b893 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb3ab15ad_b9af_40a4_b3fe_9d1ee466219a" name="Reaction_32" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">IL2 secretion from activated T cells</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mwbb30059d_3bff_4f90_98c3_ddd93f81b893" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mweb8974da_9d87_48ab_abea_97a83909edd0 </ci>
+              <ci> mw69c80a5d_614b_44d4_abb6_5cadf232d811 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8492e0c5_228d_4de2_8f8e_89ce6f8945ed" name="Reaction_33" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell killing by T cells</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf407a84d_3754_44bd_a96f_47e522a32c7f" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwfd53abab_2e67_4301_8f58_bfb8ed17a555" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwa9922ff5_b8df_4a7c_a2c5_751186650773 </ci>
+                  <ci> mw62d37f45_a1cf_4687_9914_2fe136407806 </ci>
+                  <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                  <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <ci> mwba379191_a617_422d_b427_c444cfc63908 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw2f62a1df_9f65_4e30_bace_a772b23b288b" name="Reaction_34" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Thymic output of naive T cell to blood</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw8b13b866_6776_4094_821b_9ebbbcbd79b4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <ci> mw223c14c2_740c_4255_bfa0_ee142c1e3901 </ci>
+              <ci> mw9e7e5c5e_87a6_4d3d_a8cb_b49577cec5c5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw28991bea_39f9_44a8_99cc_4dfbd2beaa9a" name="Reaction_35" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell proliferation in the peripheral compartment</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw367ce824_b9a9_4f88_a800_ee6dee5ed492" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <ci> mw04d4c0a5_f2f6_4eaa_b1a1_1749311c70d3 </ci>
+                  <ci> mw9e7e5c5e_87a6_4d3d_a8cb_b49577cec5c5 </ci>
+                </apply>
+                <ci> mw367ce824_b9a9_4f88_a800_ee6dee5ed492 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> mw127b1aba_7eef_4864_b2a2_8464b869d713 </ci>
+                  <ci> mw9e7e5c5e_87a6_4d3d_a8cb_b49577cec5c5 </ci>
+                </apply>
+                <ci> mw367ce824_b9a9_4f88_a800_ee6dee5ed492 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw34e305dc_5e9f_4769_86e5_8b9ebc06020b" name="Reaction_36" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell proliferation in the central compartment</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw8b13b866_6776_4094_821b_9ebbbcbd79b4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <ci> mw04d4c0a5_f2f6_4eaa_b1a1_1749311c70d3 </ci>
+                  <ci> mw9e7e5c5e_87a6_4d3d_a8cb_b49577cec5c5 </ci>
+                </apply>
+                <ci> mw8b13b866_6776_4094_821b_9ebbbcbd79b4 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> mw127b1aba_7eef_4864_b2a2_8464b869d713 </ci>
+                  <ci> mw9e7e5c5e_87a6_4d3d_a8cb_b49577cec5c5 </ci>
+                </apply>
+                <ci> mw8b13b866_6776_4094_821b_9ebbbcbd79b4 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw2b9080c5_8ded_43da_b146_30e272eeb576" name="Reaction_37" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell death in the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw367ce824_b9a9_4f88_a800_ee6dee5ed492" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw7425ec0a_e323_4be5_9167_e4918f45eb63 </ci>
+              <ci> mw367ce824_b9a9_4f88_a800_ee6dee5ed492 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwdfff4987_99f0_480f_95ad_a0b7ac4bad37" name="Reaction_38" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell death in the central compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw8b13b866_6776_4094_821b_9ebbbcbd79b4" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw7425ec0a_e323_4be5_9167_e4918f45eb63 </ci>
+              <ci> mw8b13b866_6776_4094_821b_9ebbbcbd79b4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw03d5e54e_659a_40a6_b252_707834b22bef" name="Reaction_39" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell entry into the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw8b13b866_6776_4094_821b_9ebbbcbd79b4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw367ce824_b9a9_4f88_a800_ee6dee5ed492" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbb024286_be41_4282_bbdb_baf0c9639e76 </ci>
+              <ci> mw8b13b866_6776_4094_821b_9ebbbcbd79b4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw90fe6b01_7ea2_45a2_be74_e81d0a4200de" name="Reaction_40" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell exit from the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw367ce824_b9a9_4f88_a800_ee6dee5ed492" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw8b13b866_6776_4094_821b_9ebbbcbd79b4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8195b8ca_4e48_4b52_b961_aeb7d94996fb </ci>
+              <ci> mw367ce824_b9a9_4f88_a800_ee6dee5ed492 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa41ec3b1_5290_4a8e_aac9_74b5f69d189c" name="Reaction_41" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell entry into the lymph node</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw8b13b866_6776_4094_821b_9ebbbcbd79b4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mweb402707_0d1c_4f8b_b5e9_8df5a61a3d3c" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw2a16f8a4_1485_4811_a257_27e69a520976 </ci>
+              <ci> mw8b13b866_6776_4094_821b_9ebbbcbd79b4 </ci>
+              <ci> mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd89b0e3d_34eb_4ef5_b32a_bfb60bb41fbe" name="Reaction_42" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell exit from the lymph node</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mweb402707_0d1c_4f8b_b5e9_8df5a61a3d3c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw8b13b866_6776_4094_821b_9ebbbcbd79b4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw7b1bc5f9_6f4a_4bf2_b1f1_e290f999d0cd </ci>
+              <ci> mweb402707_0d1c_4f8b_b5e9_8df5a61a3d3c </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3e61b137_e426_4608_b798_a4bce0fc2d31" name="Reaction_43" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell activation</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mweb402707_0d1c_4f8b_b5e9_8df5a61a3d3c" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw3684f654_91e8_4ad2_8315_c4a7d2e7c700 </ci>
+              <ci> mw3e0b87cc_31b8_4076_b09d_163494077f2c </ci>
+              <ci> mw80d416c0_059c_4559_90bd_df42a49858e3 </ci>
+              <ci> mweb402707_0d1c_4f8b_b5e9_8df5a61a3d3c </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw33bc5d29_bb34_40cb_937d_86455920061b" name="Reaction_44" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Naive T cell activation</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mw4b104a7c_75f8_4042_ba25_59dd3e8a793b" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw3684f654_91e8_4ad2_8315_c4a7d2e7c700 </ci>
+              <ci> mw3e0b87cc_31b8_4076_b09d_163494077f2c </ci>
+              <ci> mw80d416c0_059c_4559_90bd_df42a49858e3 </ci>
+              <ci> mweb402707_0d1c_4f8b_b5e9_8df5a61a3d3c </ci>
+              <ci> mwd7c4051e_d19d_4003_a388_764d84cdc196 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw7a6afdfd_654c_4c63_838c_4df19e33f1ad" name="Reaction_45" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">aT2 cell proliferation</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw4b104a7c_75f8_4042_ba25_59dd3e8a793b" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5b796b6e_d7c8_4639_81c6_4998bdee982b </ci>
+              <ci> mw4b104a7c_75f8_4042_ba25_59dd3e8a793b </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw495a5f4d_1eee_45a8_bf98_a8a014de8875" name="Reaction_46" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">aT2 cell proliferation</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mwd0714614_cdef_4223_a42d_250884914443" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5b796b6e_d7c8_4639_81c6_4998bdee982b </ci>
+              <apply>
+                <power/>
+                <cn type="integer"> 2 </cn>
+                <ci> mwadac2ac5_66b2_4fab_8ba4_59cd08034227 </ci>
+              </apply>
+              <ci> mw4b104a7c_75f8_4042_ba25_59dd3e8a793b </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwbf73174f_56b8_4236_aa5b_86205e0e4782" name="Reaction_47" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death in the central compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw3c5fee4e_cb42_426c_81d5_01f2d96645f7" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb3f71280_493c_4703_9108_b9e471dcfa30 </ci>
+              <ci> mw3c5fee4e_cb42_426c_81d5_01f2d96645f7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw97d1ff1e_21f2_4bd6_b77c_fc866583c779" name="Reaction_48" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death in the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwaabcb30d_ea7c_4d21_8f0b_7b68a12f4732" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb3f71280_493c_4703_9108_b9e471dcfa30 </ci>
+              <ci> mwaabcb30d_ea7c_4d21_8f0b_7b68a12f4732 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw37104798_d28d_42aa_ba2a_0cd0b8438548" name="Reaction_49" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death in the tumour compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9de578b3_5712_4e8a_a6d9_94ed82939ce2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb3f71280_493c_4703_9108_b9e471dcfa30 </ci>
+              <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb6454470_42e1_47e2_b8ee_1da192e3cd3e" name="Reaction_50" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death in the lymph node compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwd0714614_cdef_4223_a42d_250884914443" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb3f71280_493c_4703_9108_b9e471dcfa30 </ci>
+              <ci> mwd0714614_cdef_4223_a42d_250884914443 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwfd5c45b3_fd7a_471f_aa3a_61983d71b621" name="Reaction_51" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death from Tregs</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9de578b3_5712_4e8a_a6d9_94ed82939ce2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw9327bfe0_7447_49df_a249_7c43b9c651e2 </ci>
+                <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+                <ci> mwf35e3bbe_3e6f_49f1_b362_12ad223f2903 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw06932683_c1ca_4f18_adb5_a244294ad9a4" name="Reaction_52" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell death from cancer</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9de578b3_5712_4e8a_a6d9_94ed82939ce2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mw6752ddfc_7e08_45a7_a2b6_f3f7063b4ce0 </ci>
+                  <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                  <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+                </apply>
+              </apply>
+              <ci> mwba379191_a617_422d_b427_c444cfc63908 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw349c11b5_eb27_4a54_862b_5981d9556de1" name="Reaction_53" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell transport into the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw3c5fee4e_cb42_426c_81d5_01f2d96645f7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwaabcb30d_ea7c_4d21_8f0b_7b68a12f4732" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbb024286_be41_4282_bbdb_baf0c9639e76 </ci>
+              <ci> mw3c5fee4e_cb42_426c_81d5_01f2d96645f7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw227f7ed7_fd79_4aca_bf9f_9b027adc4c4b" name="Reaction_54" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell transport out of the peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwaabcb30d_ea7c_4d21_8f0b_7b68a12f4732" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw3c5fee4e_cb42_426c_81d5_01f2d96645f7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8195b8ca_4e48_4b52_b961_aeb7d94996fb </ci>
+              <ci> mwaabcb30d_ea7c_4d21_8f0b_7b68a12f4732 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1a9b5b5f_060a_4532_96f1_36ed8d7fd445" name="Reaction_55" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell transport into the tumour compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw3c5fee4e_cb42_426c_81d5_01f2d96645f7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw177bcd69_d7d8_46cf_b062_336ac3af1fe4 </ci>
+              <ci> mw856ba974_0523_40a6_913a_663f912dbdd2 </ci>
+              <ci> mw3c5fee4e_cb42_426c_81d5_01f2d96645f7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa1df0ca8_fa9c_432b_96f2_c644f67e4d6a" name="Reaction_56" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">T cell transport out of the lymph node compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwd0714614_cdef_4223_a42d_250884914443" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw3c5fee4e_cb42_426c_81d5_01f2d96645f7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw7b1bc5f9_6f4a_4bf2_b1f1_e290f999d0cd </ci>
+              <ci> mwd0714614_cdef_4223_a42d_250884914443 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw43d598b1_bef0_4153_9264_45e35d8826db" name="Reaction_57" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">IL2 secretion from activated T cells</body>
+        </notes>
+        <listOfProducts>
+          <speciesReference species="mwbb30059d_3bff_4f90_98c3_ddd93f81b893" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mweb8974da_9d87_48ab_abea_97a83909edd0 </ci>
+              <ci> mw4b104a7c_75f8_4042_ba25_59dd3e8a793b </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw378df65c_1f29_4c42_9234_dc62540a6509" name="Reaction_58" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell killing by T cells</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwf407a84d_3754_44bd_a96f_47e522a32c7f" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwfd53abab_2e67_4301_8f58_bfb8ed17a555" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwc47230bc_dfcb_4636_9bee_0796edb19600 </ci>
+                  <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+                  <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                  <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <ci> mwba379191_a617_422d_b427_c444cfc63908 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb0e71c4a_b15f_4a50_acba_0fe8b276eb93" name="Reaction_59" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Cancer cell killing by T cells</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw800b0423_1f76_4d7f_bfc9_501e832c478d" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwfd53abab_2e67_4301_8f58_bfb8ed17a555" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwc47230bc_dfcb_4636_9bee_0796edb19600 </ci>
+                  <ci> mw4e10b632_f2bb_44dc_ac93_2ecfe18e02c5 </ci>
+                  <ci> mw800b0423_1f76_4d7f_bfc9_501e832c478d </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> mwd31e9db8_2e3a_4899_b0e3_d119d6f798cd </ci>
+                  <ci> mwc24193ec_bca9_410b_b83c_c55224d92932 </ci>
+                  <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <ci> mwba379191_a617_422d_b427_c444cfc63908 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3b027eee_8ebd_4358_a911_314070ac689d" name="Reaction_60" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">nivolumab diffusive transport to peripheral compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwd153da63_676c_4766_a4e5_8b227ff14cde" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw202b3047_2582_44e3_87ee_841fd26434a8" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw99789de3_3eb3_4a26_b3f0_d7d594d51b26 </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <ci> mwd153da63_676c_4766_a4e5_8b227ff14cde </ci>
+                  <ci> mw15cd9584_a054_40bc_a2ac_7453c53dd8b3 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> mw202b3047_2582_44e3_87ee_841fd26434a8 </ci>
+                  <ci> mwe373af3a_33b6_4785_a101_074c1d2ed93a </ci>
+                </apply>
+              </apply>
+              <ci> mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4c1db450_7c59_4721_86c6_05042f824c67" name="Reaction_61" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">nivolumab diffusive transport to tumor compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwd153da63_676c_4766_a4e5_8b227ff14cde" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw249af6d1_47f8_4677_9c92_e46f8749b8c7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw1c153fb9_d94f_4919_b050_7bacea8d528b </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <ci> mwd153da63_676c_4766_a4e5_8b227ff14cde </ci>
+                  <ci> mw15cd9584_a054_40bc_a2ac_7453c53dd8b3 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> mw249af6d1_47f8_4677_9c92_e46f8749b8c7 </ci>
+                  <ci> mw4e94f682_88e8_4cae_868a_d3649139c711 </ci>
+                </apply>
+              </apply>
+              <ci> mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4ceb7d6d_a08a_451a_851f_f7612fe11795" name="Reaction_62" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">nivolumab diffusive transport to lymph node compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwd153da63_676c_4766_a4e5_8b227ff14cde" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwb11f1194_ea58_4374_837e_690f93dd72b1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwcc23be2e_786d_4265_aaa2_168006d75924 </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <ci> mwd153da63_676c_4766_a4e5_8b227ff14cde </ci>
+                  <ci> mw15cd9584_a054_40bc_a2ac_7453c53dd8b3 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> mwb11f1194_ea58_4374_837e_690f93dd72b1 </ci>
+                  <ci> mw9158281d_272a_4327_ae2c_632b46c8e81d </ci>
+                </apply>
+              </apply>
+              <ci> mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw38b65ffb_df7e_438e_ba26_c18b22873c1d" name="Reaction_63" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">nivolumab convective transport from tumor to lymph node</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw249af6d1_47f8_4677_9c92_e46f8749b8c7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwb11f1194_ea58_4374_837e_690f93dd72b1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwe85f0dc2_ad60_492c_ac2a_5dd67b906b5a </ci>
+                  <ci> mw249af6d1_47f8_4677_9c92_e46f8749b8c7 </ci>
+                </apply>
+                <ci> mw4e94f682_88e8_4cae_868a_d3649139c711 </ci>
+              </apply>
+              <ci> mw856ba974_0523_40a6_913a_663f912dbdd2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwff4eb0af_4f12_480c_a97d_b8832323e137" name="Reaction_64" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">nivolumab convective transport from lymph node to central</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwb11f1194_ea58_4374_837e_690f93dd72b1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwd153da63_676c_4766_a4e5_8b227ff14cde" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> mwe85f0dc2_ad60_492c_ac2a_5dd67b906b5a </ci>
+                  <ci> mwb11f1194_ea58_4374_837e_690f93dd72b1 </ci>
+                </apply>
+                <ci> mw9158281d_272a_4327_ae2c_632b46c8e81d </ci>
+              </apply>
+              <ci> mw34b00a84_bfb2_46ce_8917_4f612ba708e2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd9dbdac1_d13f_4cb1_8e3b_61c7cf96509a" name="Reaction_65" reversible="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Drug clearance from central compartment</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwd153da63_676c_4766_a4e5_8b227ff14cde" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw4efa3679_0eb7_4a4c_ba52_8bee93f7fcb9 </ci>
+              <ci> mwd153da63_676c_4766_a4e5_8b227ff14cde </ci>
+              <ci> mwd06a3f33_8f69_414e_b0d7_c7cfe575ed91 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8d811cd9_6eb0_44ca_8604_3380542d056b" name="Reaction_66" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">binding and unbinding of PD1 PDL1 in synapse</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwa30006b6_dab8_4b7c_be30_536d1cb6a289" stoichiometry="1"/>
+          <speciesReference species="mw23a173d3_5530_4aaa_90ef_6dbc96cbfd8b" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwd66d8816_d833_4998_99d9_0b738a849988" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> mw8b13dfaf_bbf2_4cb0_adde_b3a5d5241fdb </ci>
+                  <ci> mwa30006b6_dab8_4b7c_be30_536d1cb6a289 </ci>
+                  <ci> mw23a173d3_5530_4aaa_90ef_6dbc96cbfd8b </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> mw9bcbcdbe_ce27_486e_a3f0_d492e45e6e4d </ci>
+                  <ci> mwd66d8816_d833_4998_99d9_0b738a849988 </ci>
+                </apply>
+              </apply>
+              <ci> mw952fbf89_2574_41eb_ad74_514d23d98d29 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw92df8c7d_e0a0_43c4_a709_b8c63dbfe491" name="Reaction_67" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">binding and unbinding of PD1 PDL2 in synapse</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwa30006b6_dab8_4b7c_be30_536d1cb6a289" stoichiometry="1"/>
+          <speciesReference species="mw26519bfc_35e7_4e7a_9007_4d9f752d9067" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwf765da98_a1f0_4ddd_a4fe_b41fa93616e7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> mw3f5bdedc_979e_49a4_826a_02ada05fb996 </ci>
+                  <ci> mwa30006b6_dab8_4b7c_be30_536d1cb6a289 </ci>
+                  <ci> mw26519bfc_35e7_4e7a_9007_4d9f752d9067 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> mw9187b54e_435e_43f4_9b6d_2c35693c395a </ci>
+                  <ci> mwf765da98_a1f0_4ddd_a4fe_b41fa93616e7 </ci>
+                </apply>
+              </apply>
+              <ci> mw952fbf89_2574_41eb_ad74_514d23d98d29 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwcbdf3397_3811_40bc_99ec_9a1849d954bc" name="Reaction_68" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">binding and unbinding of PD1 to anti-PD1 on T1 surface in synapse</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwa30006b6_dab8_4b7c_be30_536d1cb6a289" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0c7c08b7_0692_4ed9_9f62_44900049a61f" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <ci> mw50fd1988_bf9f_464a_a5ff_c8ba4c5d4970 </ci>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> mwa30006b6_dab8_4b7c_be30_536d1cb6a289 </ci>
+                      <ci> mw3f45fe04_d216_4ab0_899e_348be86e7f04 </ci>
+                    </apply>
+                    <ci> mw15cd9584_a054_40bc_a2ac_7453c53dd8b3 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> mwe9557bc3_3398_4c42_943e_4c19d8a8fe6e </ci>
+                  <ci> mw0c7c08b7_0692_4ed9_9f62_44900049a61f </ci>
+                </apply>
+              </apply>
+              <ci> mw952fbf89_2574_41eb_ad74_514d23d98d29 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw068f37b4_9ad4_4c96_8966_54cf9d239f34" name="Reaction_69" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">binding and unbinding of PD1 to PD1-Nivo on T1 surface in synapse</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw0c7c08b7_0692_4ed9_9f62_44900049a61f" stoichiometry="1"/>
+          <speciesReference species="mwa30006b6_dab8_4b7c_be30_536d1cb6a289" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwef7910b9_bd4e_458f_8971_3a203dd2f5b5" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> mwb7dab7e1_6071_41f2_a190_87bda80ede15 </ci>
+                  <ci> mw50fd1988_bf9f_464a_a5ff_c8ba4c5d4970 </ci>
+                  <ci> mwa30006b6_dab8_4b7c_be30_536d1cb6a289 </ci>
+                  <ci> mw0c7c08b7_0692_4ed9_9f62_44900049a61f </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <ci> mwe9557bc3_3398_4c42_943e_4c19d8a8fe6e </ci>
+                  <ci> mwef7910b9_bd4e_458f_8971_3a203dd2f5b5 </ci>
+                </apply>
+              </apply>
+              <ci> mw952fbf89_2574_41eb_ad74_514d23d98d29 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf9435bd9_8b8b_42f4_a0bb_1abf1c693081" name="Reaction_70" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">binding and unbinding of PDL1 to anit-PDL1 on C1 surface in synapse</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mw23a173d3_5530_4aaa_90ef_6dbc96cbfd8b" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwd3a54c86_d7f8_4f4b_97b5_7b29dbcf1975" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <ci> mw9795db5c_dd12_4511_9a62_f87fb5e756e5 </ci>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> mw23a173d3_5530_4aaa_90ef_6dbc96cbfd8b </ci>
+                      <ci> mw67ae919f_a45a_49a4_86a3_001df8d8f69e </ci>
+                    </apply>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> mw716dabe9_24a0_4bf0_ba80_6cc190d57ffa </ci>
+                  <ci> mwd3a54c86_d7f8_4f4b_97b5_7b29dbcf1975 </ci>
+                </apply>
+              </apply>
+              <ci> mw952fbf89_2574_41eb_ad74_514d23d98d29 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1c4d7583_a165_42b4_86b8_837a2e5e2d30" name="Reaction_71" reversible="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">binding and unbinding of PDL1 to PDL1-anti-PDL1 on C1 surface in synapse</body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="mwd3a54c86_d7f8_4f4b_97b5_7b29dbcf1975" stoichiometry="1"/>
+          <speciesReference species="mw23a173d3_5530_4aaa_90ef_6dbc96cbfd8b" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw305c14c0_97d9_4dd8_9c1b_c477fd7eb188" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> mwbb4ac7a0_f1b0_4784_a1df_27c3534ec994 </ci>
+                  <ci> mw9795db5c_dd12_4511_9a62_f87fb5e756e5 </ci>
+                  <ci> mw23a173d3_5530_4aaa_90ef_6dbc96cbfd8b </ci>
+                  <ci> mwd3a54c86_d7f8_4f4b_97b5_7b29dbcf1975 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <ci> mw716dabe9_24a0_4bf0_ba80_6cc190d57ffa </ci>
+                  <ci> mw305c14c0_97d9_4dd8_9c1b_c477fd7eb188 </ci>
+                </apply>
+              </apply>
+              <ci> mw952fbf89_2574_41eb_ad74_514d23d98d29 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event id="mw60194a57_16ac_4292_af0c_e46655d06f43">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <lt/>
+              <ci> mwf407a84d_3754_44bd_a96f_47e522a32c7f </ci>
+              <apply>
+                <times/>
+                <cn> 0.9 </cn>
+                <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="mwf407a84d_3754_44bd_a96f_47e522a32c7f">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="mw0ce1c82e_466d_4063_8cb2_37d16045c5ce">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <lt/>
+              <ci> mw800b0423_1f76_4d7f_bfc9_501e832c478d </ci>
+              <apply>
+                <times/>
+                <cn> 0.9 </cn>
+                <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="mw800b0423_1f76_4d7f_bfc9_501e832c478d">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> mw1c9e525a_d7d3_4d5c_99fc_7dc54d18d8b3 </ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

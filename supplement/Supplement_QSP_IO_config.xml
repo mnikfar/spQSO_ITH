@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<sbml_converter_config>
+    <file_hash>5188c24b38d256de4c0e0cf46ab23bb2</file_hash>
+    <sim_t_start>0.0</sim_t_start>
+    <sim_t_step>1.0</sim_t_step>
+    <sim_n_step>0</sim_n_step>
+    <tol_rel>1e-09</tol_rel>
+    <tol_abs>1e-12</tol_abs>
+    <unit_convert>1</unit_convert>
+    <extra_var>
+        <use_tune_var>0</use_tune_var>
+        <extra_var_list/>
+    </extra_var>
+    <hybrid>
+        <use_hybrid_model>1</use_hybrid_model>
+        <hybrid_abm_weight>0.0</hybrid_abm_weight>
+        <hybrid_item_list>
+            <mw6b1e6284_c8a9_4f46_b2d4_ab47548cdb6b/>
+            <mw280df8d8_9d18_454f_8498_4dc203166dbe/>
+            <mw9154f624_c4b9_4434_b357_17249e3dc104/>
+            <mwf88baaac_cc66_4991_abaa_cd39e3b7d24e/>
+            <mw7a727f1f_a564_4bfa_ab65_c2255ce344ff/>
+            <mw07c3d294_3e80_4261_8b31_7b4b84357c99/>
+            <mw4a12eab8_1b3a_4a94_bae0_56a921ab1a84/>
+            <mwfa37b1fd_7fd2_48e0_ac1d_013df4d8cc83/>
+            <mw61d79408_9ab0_4502_90ea_de2528c341a2/>
+        </hybrid_item_list>
+    </hybrid>
+</sbml_converter_config>
